@@ -8,37 +8,104 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var displayLabel: UILabel!
-    @IBOutlet weak var ACButton: UIButton!
-    @IBOutlet weak var plusMinusButton: UIButton!
-    @IBOutlet weak var percentButton: UIButton!
-    @IBOutlet weak var devideButton: UIButton!
-    @IBOutlet weak var sevenButton: UIButton!
-    @IBOutlet weak var eightButton: UIButton!
-    @IBOutlet weak var nineButton: UIButton!
-    @IBOutlet weak var multiplyButton: UIButton!
-    @IBOutlet weak var fourButton: UIButton!
-    @IBOutlet weak var fiveButton: UIButton!
-    @IBOutlet weak var sixButton: UIButton!
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var oneButton: UIButton!
-    @IBOutlet weak var twoButton: UIButton!
-    @IBOutlet weak var threeButton: UIButton!
-    @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var zeroButton: UIButton!
-    @IBOutlet weak var floatingPointButton: UIButton!
-    @IBOutlet weak var equalsButton: UIButton!
     
+    var firstNumber = 0.0
+    var secondNumber = 0.0
+    var enterNumber = false
+    var operation = 0
+    
+    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet var buttons: [UIButton]!
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        var buttons: [UIButton] = [
-            ACButton, plusMinusButton, percentButton, devideButton, sevenButton, eightButton, nineButton, multiplyButton, fourButton, fiveButton, sixButton, minusButton, oneButton, oneButton, twoButton, threeButton, plusButton, zeroButton, floatingPointButton, equalsButton]
         
-        buttons.map( { $0.layer.cornerRadius = 40 })
+        let authorLabel = UILabel(
+            frame: CGRect(
+            x: 20,
+            y: 30,
+            width: 250,
+            height: 20)
+        )
+        authorLabel.textColor = .white
+        authorLabel.text = "Alexey Manohin"
+        self.view.addSubview(authorLabel)
         
+        for button in buttons {
+            button.layer.cornerRadius = 40
+        }
+    //    buttons.map({ $0.layer.cornerRadius = 40 })
+        displayLabel.text = ""
     }
-
+    
+    @IBAction func digits(_ sender: UIButton) {
+        
+        let tagButton = sender.tag
+        
+        if enterNumber == true {
+            displayLabel.text = String(tagButton)
+            enterNumber = false
+        } else {
+            displayLabel.text = (displayLabel.text ?? "") + String(tagButton)
+        }
+    }
+    
+    @IBAction func buttons(_ sender: UIButton) {
+        
+        if sender.tag != 10 && sender.tag != 15 && displayLabel.text != "" {
+            firstNumber = Double(displayLabel.text!) ?? 0
+        } else {
+            secondNumber = Double(displayLabel.text!) ?? 0
+        }
+        
+        switch sender.tag {
+        case 10:
+                displayLabel.text = ""
+        case 11:
+            displayLabel.text = "/"
+            operation = 11
+            enterNumber = true
+        case 12:
+            displayLabel.text = "*"
+            operation = 12
+            enterNumber = true
+        case 13:
+            displayLabel.text = "-"
+            operation = 13
+            enterNumber = true
+        case 14:
+            displayLabel.text = "+"
+            operation = 14
+            enterNumber = true
+        case 15:
+            if operation == 11 {
+                if secondNumber != 0 {
+                    displayLabel.text = String(firstNumber / secondNumber)
+                } else {
+                   // displayLabel.textColor = .red
+                   // displayLabel.text = "На ноль делить НЕЛЬЗЯ!"
+                    
+                    let alert = UIAlertController(
+                        title: "На \(Int(secondNumber)) делить нельзя!",
+                        message: "Привет, 33 developers! =)",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(
+                        title: "Ладно, больше не буду",
+                        style: .cancel)
+                    )
+                    present(alert, animated: true)
+                }
+                
+            } else if operation == 12 {
+                displayLabel.text = String(firstNumber * secondNumber)
+            } else if operation == 13 {
+                displayLabel.text = String(firstNumber - secondNumber)
+            } else if operation == 14 {
+                displayLabel.text = String(firstNumber + secondNumber)
+            }
+        default:
+            return
+        }
+    }
 }
 
