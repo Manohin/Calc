@@ -302,7 +302,7 @@
                                             <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jYa-cn-Gbm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvc-VL-zU6">
+                                    <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvc-VL-zU6">
                                         <rect key="frame" x="93" y="0.0" width="85" height="85"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <constraints>
@@ -318,7 +318,7 @@
                                             <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wme-Tu-Aag"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5q-7g-oGb">
+                                    <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5q-7g-oGb">
                                         <rect key="frame" x="183" y="0.0" width="88" height="85"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <constraints>

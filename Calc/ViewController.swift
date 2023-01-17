@@ -21,10 +21,10 @@ class ViewController: UIViewController {
         
         let authorLabel = UILabel(
             frame: CGRect(
-            x: 20,
-            y: 30,
-            width: 250,
-            height: 20)
+                x: 20,
+                y: 30,
+                width: 250,
+                height: 20)
         )
         authorLabel.textColor = .white
         authorLabel.text = "Alexey Manohin"
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         for button in buttons {
             button.layer.cornerRadius = 40
         }
-    //    buttons.map({ $0.layer.cornerRadius = 40 })
+        //    buttons.map({ $0.layer.cornerRadius = 40 })
         displayLabel.text = ""
     }
     
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         
         switch sender.tag {
         case 10:
-                displayLabel.text = ""
+            displayLabel.text = ""
         case 11:
             displayLabel.text = "/"
             operation = 11
@@ -81,8 +81,8 @@ class ViewController: UIViewController {
                 if secondNumber != 0 {
                     displayLabel.text = String(firstNumber / secondNumber)
                 } else {
-                   // displayLabel.textColor = .red
-                   // displayLabel.text = "На ноль делить НЕЛЬЗЯ!"
+                    // displayLabel.textColor = .red
+                    // displayLabel.text = "На ноль делить НЕЛЬЗЯ!"
                     
                     let alert = UIAlertController(
                         title: "На \(Int(secondNumber)) делить нельзя!",
@@ -103,6 +103,9 @@ class ViewController: UIViewController {
             } else if operation == 14 {
                 displayLabel.text = String(firstNumber + secondNumber)
             }
+        case 16:
+            guard (displayLabel.text != nil) else { return }
+            displayLabel.text = "-" + displayLabel.text!
         default:
             return
         }
