@@ -104,8 +104,11 @@ class ViewController: UIViewController {
                 displayLabel.text = String(firstNumber + secondNumber)
             }
         case 16:
-            guard (displayLabel.text != nil) else { return }
+            guard (displayLabel.text != "") else { return }
             displayLabel.text = "-" + displayLabel.text!
+        case 17:
+            guard (displayLabel.text != "") else { return }
+            displayLabel.text = String(Double(displayLabel.text!)! / 100)
         default:
             return
         }
