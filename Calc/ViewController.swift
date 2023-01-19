@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // переменные
+    
     var firstNumber = 0.0
     var secondNumber = 0.0
     var enterNumber = false
